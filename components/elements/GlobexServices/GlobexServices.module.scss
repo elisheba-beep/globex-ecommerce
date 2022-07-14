@@ -1,0 +1,31 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 57px;
+}
+
+.service{
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    text-align: center;
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    color: #272727;
+    padding: 18px 29px ;
+    gap: 16px;
+    &:hover{
+        transform: scale(1.05);
+    }
+   
+}
+
+.mainText{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.subText{
+    font-size: 18px;
+    font-weight: 400;
+}
