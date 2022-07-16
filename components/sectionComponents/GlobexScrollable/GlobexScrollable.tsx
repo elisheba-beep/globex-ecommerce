@@ -47,12 +47,12 @@ const GlobexScrollable = () => {
   const [length, setLength] = useState(images.length);
   function back() {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      setCurrentIndex((prev) => prev - 1);
     }
   }
   function forward() {
-    if (currentIndex < length - 1) {
-      setCurrentIndex(currentIndex + 1);
+    if (currentIndex < length - 2) {
+      setCurrentIndex((prev) => prev + 1);
     }
   }
   useEffect(() => {
@@ -62,8 +62,12 @@ const GlobexScrollable = () => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
+        <GlobexScrollButtons onClickLeft={back} onClickRight={forward} />
         <div className={styles.contentWrapper}>
-          <div className={styles.content}>
+          <div
+            className={styles.content}
+            style={{ transform: `translateX(-${currentIndex * 38}%)` }}
+          >
             {images.map((image) => {
               return (
                 <GlobexCard

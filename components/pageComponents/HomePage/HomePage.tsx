@@ -13,9 +13,7 @@ import imageThree from "/public/images/image-three.png";
 import imageFour from "/public/images/image-four.png";
 import imageFive from "/public/images/image-five.png";
 import imageSix from "/public/images/image-six.png";
-import clothesOne from "/public/images/clothesOne.png";
-import clothesTwo from "/public/images/clothesTwo.png";
-import clothesThree from "/public/images/clothesThree.png";
+
 import dealsLogo from "/public/images/deals-logo.png";
 import Image from "next/image";
 import GlobexScrollable from "../../sectionComponents/GlobexScrollable/GlobexScrollable";
@@ -25,6 +23,7 @@ import GlobexScrollButtons from "../../sectionComponents/GlobexScrollable/Globex
 import GlobexButton from "../../elements/GlobexButton/GlobexButton";
 import GlobexServices from "../../elements/GlobexServices/GlobexServices";
 import { GlobexAbout } from "../../sectionComponents/GlobexAbout";
+import GlobexBlogs from "../../sectionComponents/GlobexBlogs/GlobexBlogs";
 
 const images = [
   {
@@ -227,47 +226,11 @@ const HomePage = () => {
         <br />
         <GlobexSubHeading subHeading="What Our Customers Say" />
       </div>
-      <div className={styles.buttons}>
-        <GlobexScrollButtons />
-      </div>
+      
       <GlobexTestimonials />
       <div className={styles.container}>
         <GlobexSubHeading subHeading="Featured Blogs" />
-        <div className={styles.blogs}>
-          <GlobexCard src={clothesOne} alt="featured-blogs" display="flex">
-            <div className={styles.box}>
-              <p>Blog</p>
-              <h3>Discover new ways to decorate your home</h3>
-              <p>
-                Lorem ipsum dolor sit amet,aliqua consectetur adipiscing elit ut
-                ...
-              </p>
-              <h3>By Souha. H</h3>
-            </div>
-          </GlobexCard>
-          <GlobexCard src={clothesTwo} alt="featured-blogs" display="flex">
-            <div className={styles.box}>
-              <p>Blog</p>
-              <h3>Discover new ways to decorate your home</h3>
-              <p>
-                Lorem ipsum dolor sit amet,aliqua consectetur adipiscing elit ut
-                ...
-              </p>
-              <h3>By Souha. H</h3>
-            </div>
-          </GlobexCard>
-          <GlobexCard src={clothesThree} alt="featured-blogs" display="flex">
-            <div className={styles.box}>
-              <p>Blog</p>
-              <h3>Discover new ways to decorate your home</h3>
-              <p>
-                Lorem ipsum dolor sit amet,aliqua consectetur adipiscing elit ut
-                ...
-              </p>
-              <h3>By Souha. H</h3>
-            </div>
-          </GlobexCard>
-        </div>
+       <GlobexBlogs/>
         <div className={styles.center}>
           <GlobexButton variant="black">View all</GlobexButton>
         </div>

@@ -1,22 +1,28 @@
-.container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-   
-    button{
-        width: 54px;
-        height: 54px;
-        background: rgba(39, 39, 39, 0.8);
-        opacity: 0.8;
-        color: #FFFFFF;
-        border-radius: 100%;
-        border: none;
-        padding: 10px;
-        font-size: 30px;
-        
-        &:hover{
-            cursor: pointer;
-            transform: scale(0.98);
-        }
+.container {
+
+
+  button {
+    background: rgba(39, 39, 39, 0.8);
+    position: absolute;
+    color: #FFFFFF;
+    z-index: 1;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(0.98);
     }
+  }
+}
+
+.leftArrow {
+    left: 24px;
+}
+
+.rightArrow {
+    right: 24px;
 }

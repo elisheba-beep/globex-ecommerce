@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './GlobexScrollButtons.module.scss'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 interface ScrollButtonProps{
   onClickRight?: VoidFunction 
   onClickLeft?: VoidFunction 
@@ -10,11 +9,11 @@ interface ScrollButtonProps{
 const GlobexScrollButtons = ({onClickRight, onClickLeft}:ScrollButtonProps) => {
   return (
     <div className={styles.container}>
-        <button onClick={onClickLeft}>
-            <FaAngleLeft/>
+        <button onClick={onClickLeft} className={styles.leftArrow}>
+          &lt;
         </button>
-        <button onClick={onClickRight}>
-            <FaAngleRight/>
+        <button onClick={onClickRight} className={styles.rightArrow}>
+           &gt;
         </button>
     </div>
   )
