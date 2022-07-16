@@ -11,7 +11,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $TRAVIS_DEPLOY_TOKEN
+  github_token: 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
   local_dir: out
   on:
     all_branches: true
