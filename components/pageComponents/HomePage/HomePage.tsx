@@ -19,7 +19,7 @@ import Image from "next/image";
 import GlobexScrollable from "../../sectionComponents/GlobexScrollable/GlobexScrollable";
 import GlobexGrid from "../../sectionComponents/GlobexGrid/GlobexGrid";
 import GlobexTestimonials from "../../sectionComponents/GlobexTestimonials/GlobexTestimonials";
-import GlobexScrollButtons from "../../sectionComponents/GlobexScrollable/GlobexScrollButtons/GlobexScrollButtons";
+
 import GlobexButton from "../../elements/GlobexButton/GlobexButton";
 import GlobexServices from "../../elements/GlobexServices/GlobexServices";
 import { GlobexAbout } from "../../sectionComponents/GlobexAbout";
@@ -48,6 +48,34 @@ const images = [
   },
 ];
 
+interface SpotlightProps{
+  type: 'half' | 'full',
+  right: string,
+  color: string,
+  variant: string,
+  heading: string,
+  left?: string
+}
+interface Spotlight extends Array<SpotlightProps>{}
+
+const spotlight:Spotlight = [
+  {
+    right: "images/full-screen.png",
+    color: "#FFFFFF",
+    variant: "white",
+    heading: "FOREVER 21",
+    type: 'full'
+  },
+  {
+    type: 'half',
+    left: "images/gridThree.png",
+    right: "images/greenImg.png",
+    color: "#FFFFFF",
+    variant: "white",
+    heading: "FOREVER 21",
+  },
+];
+
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -61,9 +89,21 @@ const HomePage = () => {
 
       return currentIndex;
     }
-    const intervalId: any = setInterval(interval, 5000);
+    function spotlight() {
+      if (currentIndex === 1) {
+        setCurrentIndex(0);
+      } else {
+        setCurrentIndex(1);
+      }
+    }
 
-    return () => clearInterval(intervalId);
+    const intervalId = setInterval(interval, 5000);
+    const spotlightId = setInterval(spotlight, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+      clearInterval(spotlightId);
+    };
   }, [currentIndex]);
 
   return (
@@ -202,12 +242,14 @@ const HomePage = () => {
         <br />
         <br />
       </div>
+
       <GlobexCTA
-        type="full"
-        right="images/full-screen.png"
-        color="#FFFFFF"
-        variant="white"
-        heading="FOREVER 21"
+        type={spotlight[currentIndex].type}
+        right={spotlight[currentIndex].right}
+        color={spotlight[currentIndex].color}
+        variant={spotlight[currentIndex].variant}
+        heading={spotlight[currentIndex].heading}
+        left={spotlight[currentIndex].left}
       />
       <div className={styles.container}>
         <GlobexSubHeading subHeading="Shop by Categories" />
@@ -221,16 +263,15 @@ const HomePage = () => {
           imageSix="images/image-one.png"
           grid="random"
         />
-
         <br />
         <br />
         <GlobexSubHeading subHeading="What Our Customers Say" />
       </div>
-      
+
       <GlobexTestimonials />
       <div className={styles.container}>
         <GlobexSubHeading subHeading="Featured Blogs" />
-       <GlobexBlogs/>
+        <GlobexBlogs />
         <div className={styles.center}>
           <GlobexButton variant="black">View all</GlobexButton>
         </div>
