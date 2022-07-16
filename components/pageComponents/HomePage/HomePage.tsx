@@ -78,6 +78,7 @@ const spotlight:Spotlight = [
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     function interval() {
@@ -90,10 +91,10 @@ const HomePage = () => {
       return currentIndex;
     }
     function spotlight() {
-      if (currentIndex === 1) {
-        setCurrentIndex(0);
+      if (index === 1) {
+        setIndex(0);
       } else {
-        setCurrentIndex(1);
+        setIndex(1);
       }
     }
 
@@ -244,12 +245,12 @@ const HomePage = () => {
       </div>
 
       <GlobexCTA
-        type={spotlight[currentIndex].type}
-        right={spotlight[currentIndex].right}
-        color={spotlight[currentIndex].color}
-        variant={spotlight[currentIndex].variant}
-        heading={spotlight[currentIndex].heading}
-        left={spotlight[currentIndex].left}
+        type={spotlight[index].type}
+        right={spotlight[index].right}
+        color={spotlight[index].color}
+        variant={spotlight[index].variant}
+        heading={spotlight[index].heading}
+        left={spotlight[index].left}
       />
       <div className={styles.container}>
         <GlobexSubHeading subHeading="Shop by Categories" />
