@@ -1,41 +1,87 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GlobexCard from "../../elements/GlobexCard/GlobexCard";
 import styles from "./GlobexScrollable.module.scss";
 import guy from "/public/images/guy.png";
+import trendingOffers from "/public/images/trendingOffers.png";
 import dealsLogo from "/public/images/deals-logo.png";
+import forever from "/public/images/forever.png";
 import Image from "next/image";
 import GlobexButton from "../../elements/GlobexButton/GlobexButton";
 import GlobexScrollButtons from "./GlobexScrollButtons/GlobexScrollButtons";
 
-const GlobexScrollable = () => {
-  return (
-    <div>
-      <div className={styles.buttons}>
-        <GlobexScrollButtons />
-      </div>
-      <div  className={styles.container}>
+const images = [
+  {
+    image: guy,
+    logo: dealsLogo,
+    discount: "50%",
+    id: 0,
+  },
+  {
+    image: trendingOffers,
+    logo: dealsLogo,
+    discount: "60%",
+    id: 1,
+  },
+  {
+    image: guy,
+    logo: forever,
+    discount: "50%",
+    id: 2,
+  },
+  {
+    image: trendingOffers,
+    logo: dealsLogo,
+    discount: "60%",
+    id: 3,
+  },
+  {
+    image: guy,
+    logo: forever,
+    discount: "50%",
+    id: 4,
+  },
+];
 
-      <GlobexCard src={guy} alt="trending-deal" display="reverse">
-        <div className={styles.box}>
-          <Image src={dealsLogo} alt="logo" />
-          <h3>Min 60% off</h3>
-          <GlobexButton variant="black">Explore</GlobexButton>
+const GlobexScrollable = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [length, setLength] = useState(images.length);
+  function back() {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  }
+  function forward() {
+    if (currentIndex < length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  }
+  useEffect(() => {
+    setLength(images.length);
+  }, []);
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <div className={styles.contentWrapper}>
+          <div className={styles.content}>
+            {images.map((image) => {
+              return (
+                <GlobexCard
+                  key={image.id}
+                  src={image.image}
+                  alt="trending-deal"
+                  display="reverse"
+                >
+                  <div className={styles.box}>
+                    <Image src={image.logo} alt="logo" />
+                    <h3>Min {image.discount} off</h3>
+                    <GlobexButton variant="black">Explore</GlobexButton>
+                  </div>
+                </GlobexCard>
+              );
+            })}
+          </div>
         </div>
-      </GlobexCard>
-      <GlobexCard src={guy} alt="trending-deal" display="reverse">
-        <div className={styles.box}>
-          <Image src={dealsLogo} alt="logo" />
-          <h3>Min 60% off</h3>
-          <GlobexButton variant="black">Explore</GlobexButton>
-        </div>
-      </GlobexCard>
-      <GlobexCard src={guy} alt="trending-deal" display="reverse">
-        <div className={styles.box}>
-          <Image src={dealsLogo} alt="logo" />
-          <h3>Min 60% off</h3>
-          <GlobexButton variant="black">Explore</GlobexButton>
-        </div>
-      </GlobexCard>
       </div>
     </div>
   );

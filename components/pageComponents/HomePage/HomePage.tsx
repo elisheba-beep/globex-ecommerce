@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
-import { FaLine } from "react-icons/fa";
-import { AiOutlineMinus } from "react-icons/ai";
 import GlobexCard from "../../elements/GlobexCard/GlobexCard";
 import GlobexDiscount from "../../elements/GlobexDiscount/GlobexDiscount";
 import GlobexPrice from "../../elements/GlobexPrice/GlobexPrice";
@@ -28,17 +26,71 @@ import GlobexButton from "../../elements/GlobexButton/GlobexButton";
 import GlobexServices from "../../elements/GlobexServices/GlobexServices";
 import { GlobexAbout } from "../../sectionComponents/GlobexAbout";
 
+const images = [
+  {
+    left: "images/woman.png",
+    right: "images/brownImg.png",
+    id: 0,
+  },
+  {
+    left: "images/gridThree.png",
+    right: "images/brownImg.png",
+    id: 1,
+  },
+  {
+    left: "images/image-five.png",
+    right: "images/brownImg.png",
+    id: 2,
+  },
+  {
+    left: "images/image-six.png",
+    right: "images/brownImg.png",
+    id: 3,
+  },
+];
+
 const HomePage = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    function interval() {
+      if (currentIndex === images.length - 1) {
+        setCurrentIndex(0);
+      } else {
+        setCurrentIndex(currentIndex + 1);
+      }
+
+      return currentIndex;
+    }
+    const intervalId: any = setInterval(interval, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [currentIndex]);
+
   return (
     <GlobexPage>
       <GlobexDiscount />
       <GlobexCTA
         heading="PRADA"
-        left="images/woman.png"
-        right="images/brownImg.png"
+        left={images[currentIndex].left}
+        right={images[currentIndex].right}
         variant="black"
         type="half"
       />
+      <div className={styles.bottomDots}>
+        {images.map((image) => {
+          return (
+            <button
+              key={image.id}
+              style={{
+                backgroundColor: `${
+                  image.id == currentIndex ? "#002482" : "#c4c4c4"
+                }`,
+              }}
+            />
+          );
+        })}
+      </div>
       <div className={styles.container}>
         <GlobexSubHeading subHeading="Trending Now" />
         <div className={styles.cards}>
@@ -59,7 +111,7 @@ const HomePage = () => {
           </GlobexCard>
 
           <GlobexCard src={imageTwo} display="block">
-            <h3>Women&apos;s Denim Jacket</h3>
+            <h3>Men&apos;s Biker Jacket</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
               <div className={styles.rating}>
@@ -75,7 +127,7 @@ const HomePage = () => {
           </GlobexCard>
 
           <GlobexCard src={imageThree} display="block">
-            <h3>Women&apos;s Denim Jacket</h3>
+            <h3>Baggy Shirt</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
               <div className={styles.rating}>
@@ -91,7 +143,7 @@ const HomePage = () => {
           </GlobexCard>
 
           <GlobexCard src={imageFour} display="block">
-            <h3>Women&apos;s Denim Jacket</h3>
+            <h3>Dinner Dress</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
               <div className={styles.rating}>
@@ -222,7 +274,7 @@ const HomePage = () => {
       </div>
       <div className={styles.services}>
         <GlobexServices />
-        <GlobexAbout/>
+        <GlobexAbout />
       </div>
     </GlobexPage>
   );
