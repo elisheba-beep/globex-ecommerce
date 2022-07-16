@@ -22,8 +22,11 @@ type == 'half' ?
       <div className={styles.image} style={{backgroundImage: `url(${left})`}}/>
       <div className={styles.content} style={{backgroundImage: `url(${right})`}}>
         <GlobexHeading heading={heading} colour={color}/>
+        <br />
         <GlobexSubText subText="Big Fashion Festival" color={color}/>
         <GlobexSubText subText="50% - 80% off" color={color}/>
+        <br />
+        <br />
         <GlobexButton variant={variant}>Explore</GlobexButton>
       </div>
     </div> ): ( <div className={styles.container}>
@@ -32,6 +35,7 @@ type == 'half' ?
       <br />
       <GlobexSubText subText="Big Fashion Festival" color={color}/>
       <GlobexSubText subText="50% - 80% off" color={color}/>
+      <br />
       <br />
       <GlobexButton variant={variant}>Explore</GlobexButton>
     </div>
