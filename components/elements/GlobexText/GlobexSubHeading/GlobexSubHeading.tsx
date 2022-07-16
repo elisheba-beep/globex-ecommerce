@@ -3,7 +3,7 @@ import styles from './GlobexSubHeading.module.scss'
 
 interface SubHeadingProps{
     subHeading: string
-    color: string
+    color?: string
 }
 
 const GlobexSubHeading = ({subHeading, color}: SubHeadingProps) => {

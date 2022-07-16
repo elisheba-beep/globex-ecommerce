@@ -7,17 +7,17 @@ const GlobexTestimonials = () => {
   return (
     <div className={styles.container}>
       <GlobexTestimonialCard
-        userImage="/image-four.png"
+        userImage="images/image-three.png"
         rating="4.4"
         testimonial="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui vel morbi cursus sed sodales molestie proin dictum gravida. Porttitor maecenas tincidunt ipsum semper malesuada. In sapien feugiat laoreet convallis eu sed. Sapien et montes, duis tempor euismod augue cras eu eget. Risus suspendisse mauris ullamcorper "
       />
       <GlobexTestimonialCard
-        userImage="/image-four.png"
+        userImage="images/image-two.png"
         rating="4.4"
         testimonial="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui vel morbi cursus sed sodales molestie proin dictum gravida. Porttitor maecenas tincidunt ipsum semper malesuada. In sapien feugiat laoreet convallis eu sed. Sapien et montes, duis tempor euismod augue cras eu eget. Risus suspendisse mauris ullamcorper "
       />
       <GlobexTestimonialCard
-        userImage="/image-four.png"
+        userImage="images/gridFour.png"
         rating="4.4"
         testimonial="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui vel morbi cursus sed sodales molestie proin dictum gravida. Porttitor maecenas tincidunt ipsum semper malesuada. In sapien feugiat laoreet convallis eu sed. Sapien et montes, duis tempor euismod augue cras eu eget. Risus suspendisse mauris ullamcorper "
       />

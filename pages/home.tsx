@@ -1,7 +1,10 @@
 import React from "react";
 import GlobexCard from "../components/elements/GlobexCard/GlobexCard";
 import GlobexDiscount from "../components/elements/GlobexDiscount/GlobexDiscount";
+import GlobexEmail from "../components/elements/GlobexEmail/GlobexEmail";
 import GlobexServices from "../components/elements/GlobexServices/GlobexServices";
+import GlobexAppBar from "../components/layouts/GlobexAppBar/GlobexAppBar";
+import GlobexFooter from "../components/layouts/GlobexFooter/GlobexFooter";
 import GlobexCTA from "../components/sectionComponents/GlobexCTA/GlobexCTA";
 import GlobexGrid from "../components/sectionComponents/GlobexGrid/GlobexGrid";
 import GlobexTestimonials from "../components/sectionComponents/GlobexTestimonials/GlobexTestimonials";
@@ -9,13 +12,14 @@ import GlobexTestimonials from "../components/sectionComponents/GlobexTestimonia
 const home = () => {
   return (
     <div>
+      <GlobexAppBar/>
       <GlobexDiscount />
       <GlobexCTA
         left="/image-four.png"
         right="/image-four.png"
         heading="PRADA"
         variant="white"
-        type="full"
+        type="half"
         color="#FFFFFF"
       />
       <GlobexGrid
@@ -85,6 +89,8 @@ const home = () => {
       </GlobexGrid>
       <GlobexTestimonials/>
       <GlobexServices/>
+      <GlobexEmail/>
+      <GlobexFooter/>
     </div>
   );
 };

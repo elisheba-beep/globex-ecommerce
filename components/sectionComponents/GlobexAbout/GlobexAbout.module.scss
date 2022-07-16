@@ -1,0 +1,41 @@
+.container {
+  width: 100%;
+  display: flex;
+  gap: 28px;
+  margin: 50px 0;
+}
+
+.about {
+  width: 100%;
+display: grid;
+gap: 20px;
+  h1 {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 44.64px;
+    color: #272727;
+  }
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #272727;
+    line-height: 44.64px;
+  }
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #272727;
+    line-height: 29.76px;
+  }
+  p {
+    font-size: 24px;
+    font-weight: 400;
+    color: #272727;
+    line-height: 29.76px;
+  }
+}
+
+.image {
+  width: 100%;
+  background-size: cover;
+}

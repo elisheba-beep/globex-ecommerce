@@ -1,7 +1,7 @@
 .container{
     width: 100%;
     display: flex;
-    overflow: hidden;
+    overflow-x: scroll;
     gap: 60px;
     margin: 10px;
 }

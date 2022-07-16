@@ -21,9 +21,9 @@ type == 'half' ?
    ( <div className={styles.container}>
       <div className={styles.image} style={{backgroundImage: `url(${left})`}}/>
       <div className={styles.content} style={{backgroundImage: `url(${right})`}}>
-        <GlobexHeading heading={heading} />
-        <GlobexSubText subText="Big Fashion Festival"/>
-        <GlobexSubText subText="50% - 80% off"/>
+        <GlobexHeading heading={heading} colour={color}/>
+        <GlobexSubText subText="Big Fashion Festival" color={color}/>
+        <GlobexSubText subText="50% - 80% off" color={color}/>
         <GlobexButton variant={variant}>Explore</GlobexButton>
       </div>
     </div> ): ( <div className={styles.container}>
