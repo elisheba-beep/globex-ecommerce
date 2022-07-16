@@ -78,10 +78,34 @@ const GlobexFooter = () => {
         <p>Terms and Conditions</p>
         <p>Privacy Policy</p>
         <div className={styles.socials}>
-          <IoLogoFacebook className={styles.social}/>
-          <IoLogoInstagram className={styles.social}/>
-          <IoLogoWhatsapp className={styles.social}/>
-          <IoLogoTwitter className={styles.social}/>
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IoLogoFacebook className={styles.social} />
+          </a>
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IoLogoInstagram className={styles.social} />
+          </a>
+          <a
+            href="https://www.whatsapp.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IoLogoWhatsapp className={styles.social} />
+          </a>
+          <a
+            href="https://www.twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IoLogoTwitter className={styles.social} />
+          </a>
         </div>
       </div>
     </div>

@@ -26,7 +26,13 @@ export const GlobexAbout = () => {
         <h3>Contact information</h3>
         <p>+91 1256378409</p>
         <p>Someting@random.com</p>
-        <GlobexButton variant="black">Directions</GlobexButton>
+        <a
+          href="https://www.google.com/maps/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GlobexButton variant="black">Directions</GlobexButton>
+        </a>
       </div>
       <div
         className={styles.image}
