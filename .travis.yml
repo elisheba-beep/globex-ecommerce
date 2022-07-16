@@ -11,8 +11,9 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: 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
+  github_token: $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
   local_dir: out
+  edge: true
   on:
     all_branches: true
     condition: $TRAVIS_BRANCH =~ ^(master|main)$
