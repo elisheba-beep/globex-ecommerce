@@ -105,6 +105,7 @@ const HomePage = () => {
       clearInterval(intervalId);
       clearInterval(spotlightId);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
   return (
