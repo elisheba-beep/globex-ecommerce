@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobexSubHeading from "../../elements/GlobexText/GlobexSubHeading/GlobexSubHeading";
 import GlobexFilter from "../../elements/GlobexFilter/GlobexFilter";
 import styles from "./GlobexProductFilters.module.scss";
@@ -89,75 +89,111 @@ const discount = [
 ];
 
 const GlobexProductFilters = () => {
+  const [hideBrand, setHideBrand] = useState(false);
+  const [hidePrice, setHidePrice] = useState(false);
+  const [hideDiscount, setHideDiscount] = useState(false);
+
+  const handleBrand = () => {
+    setHideBrand((prev) => !prev);
+  };
+  const handlePrice = () => {
+    setHidePrice((prev) => !prev);
+  };
+  const handleDiscount = () => {
+    setHideDiscount((prev) => !prev);
+  };
+
+  const handleAll = () => {
+    setHideBrand((prev) => !prev);
+    setHidePrice((prev) => !prev);
+    setHideDiscount((prev) => !prev);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.section}>
         <div className={styles.heading}>
           <GlobexSubHeading subHeading="Filters" />
-          <span>Clear all</span>
-        </div>
-        <div className={styles.tags}>
-          <GlobexFilter tag="Brand" />
-          <GlobexFilter tag="Price" />
-          <GlobexFilter tag="Discounts" />
-        </div>
-      </div>
-
-      <hr />
-      <div className={styles.section}>
-        <div className={styles.heading}>
-          <GlobexHeading3 heading3="Brand" />
-          <span>
-            <IoIosSearch />
+          <span onClick={handleAll}>
+            {hideBrand && hideDiscount && hidePrice ? "Show All" : "Clear All"}
           </span>
         </div>
-        <div className={styles.checkboxes}>
-          {brands.map((brand) => {
-            return (
-              <GlobexCheckbox
-                key={brand.id}
-                tag={brand.name}
-                number={brand.number}
-              />
-            );
-          })}
-          <p className={styles.blueText}>+40 more</p>
+        <div className={styles.tags}>
+          {hideBrand ? "" : <GlobexFilter tag="Brand" onClick={handleBrand} />}
+          {hidePrice ? "" : <GlobexFilter tag="Price" onClick={handlePrice} />}
+          {hideDiscount ? (
+            ""
+          ) : (
+            <GlobexFilter tag="Discounts" onClick={handleDiscount} />
+          )}
         </div>
       </div>
       <hr />
-      <div className={styles.section}>
-        <div className={styles.heading}>
-          <GlobexHeading3 heading3="Price" />
+      {hideBrand ? (
+        ""
+      ) : (
+        <div className={styles.section}>
+          <div className={styles.heading}>
+            <GlobexHeading3 heading3="Brand" />
+            <span>
+              <IoIosSearch />
+            </span>
+          </div>
+          <div className={styles.checkboxes}>
+            {brands.map((brand) => {
+              return (
+                <GlobexCheckbox
+                  key={brand.id}
+                  tag={brand.name}
+                  number={brand.number}
+                />
+              );
+            })}
+            <p className={styles.blueText}>+40 more</p>
+          </div>
         </div>
-        <div className={styles.checkboxes}>
-          {prices.map((price) => {
-            return (
-              <GlobexCheckbox
-                key={price.id}
-                tag={price.range}
-                number={price.number}
-              />
-            );
-          })}
-        </div>
-      </div>
+      )}
       <hr />
-      <div className={styles.section}>
-        <div className={styles.heading}>
-          <GlobexHeading3 heading3="Discount Range" />
+      {hidePrice ? (
+        ""
+      ) : (
+        <div className={styles.section}>
+          <div className={styles.heading}>
+            <GlobexHeading3 heading3="Price" />
+          </div>
+          <div className={styles.checkboxes}>
+            {prices.map((price) => {
+              return (
+                <GlobexCheckbox
+                  key={price.id}
+                  tag={price.range}
+                  number={price.number}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div className={styles.checkboxes}>
-          {discount.map((discount) => {
-            return (
-              <GlobexCheckbox
-                key={discount.id}
-                tag={discount.range}
-                number={discount.number}
-              />
-            );
-          })}
+      )}
+      <hr />
+      {hideDiscount ? (
+        ""
+      ) : (
+        <div className={styles.section}>
+          <div className={styles.heading}>
+            <GlobexHeading3 heading3="Discount Range" />
+          </div>
+          <div className={styles.checkboxes}>
+            {discount.map((discount) => {
+              return (
+                <GlobexCheckbox
+                  key={discount.id}
+                  tag={discount.range}
+                  number={discount.number}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
