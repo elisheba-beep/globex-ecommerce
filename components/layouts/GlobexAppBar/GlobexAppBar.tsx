@@ -40,7 +40,9 @@ const GlobexAppBar = () => {
         <li>Men</li>
         <li>Women</li>
         <li>Kids</li>
-        <li>Shop</li>
+        <li style={{textDecoration: `${router.asPath == '/products' ? 'underline' : 'none'}`}} onClick={()=>{
+          router.push(Routes.products)
+        }}>Products</li>
         <li>Contact Us</li>
       </ul>
       <GlobexSearch />

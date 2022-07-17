@@ -4,6 +4,8 @@ import styles from "./GlobexCTA.module.scss";
 import GlobexHeading from "../../elements/GlobexText/GlobexHeading/GlobexHeading";
 import GlobexSubText from "../../elements/GlobexText/GlobexSubText/GlobexSubText";
 import GlobexButton from "../../elements/GlobexButton/GlobexButton";
+import { useRouter } from "next/router";
+import { Routes } from "../../../constants/navigation";
 
 interface CTAProps {
   left?: string | any;
@@ -15,6 +17,7 @@ interface CTAProps {
 }
 
 const GlobexCTA = ({ left, right, variant, heading, type, color }: CTAProps) =>{
+  const router = useRouter();
   return (
    
 type == 'half' ? 
@@ -27,7 +30,7 @@ type == 'half' ?
         <GlobexSubText subText="50% - 80% off" color={color}/>
         <br />
         <br />
-        <GlobexButton variant={variant}>Explore</GlobexButton>
+        <GlobexButton variant={variant} onClick={()=>{router.push(Routes.products)}}>Explore</GlobexButton>
       </div>
     </div> ): ( <div className={styles.container}>
     <div className={styles.content} style={{backgroundImage: `url(${right})`}}>
@@ -37,7 +40,7 @@ type == 'half' ?
       <GlobexSubText subText="50% - 80% off" color={color}/>
       <br />
       <br />
-      <GlobexButton variant={variant}>Explore</GlobexButton>
+      <GlobexButton variant={variant} onClick={()=>{router.push(Routes.products)}}>Explore</GlobexButton>
     </div>
   </div> )
   )

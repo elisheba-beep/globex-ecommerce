@@ -7,6 +7,7 @@ interface GridProps {
   imageFour?: string;
   imageFive?: string;
   imageSix?: string;
+  gap?: string;
   grid: "random" | "3col" | "4col";
   children?: React.ReactNode;
 }
@@ -20,6 +21,7 @@ const GlobexGrid = ({
   imageSix,
   grid,
   children,
+  gap
 }: GridProps) => {
   return grid == "random" ? (
     <div className={styles.container}>
@@ -31,9 +33,9 @@ const GlobexGrid = ({
       <div style={{ backgroundImage: `url(${imageSix})` }} />
     </div>
   ) : grid == "3col" ? (
-    <div className={styles.threeCol}>{children}</div>
+    <div className={styles.threeCol} style={{gap: `${gap}`}}>{children}</div>
   ) : (
-    <div className={styles.fourCol}>{children}</div>
+    <div className={styles.fourCol} style={{gap: `${gap}`}}>{children}</div>
   );
 };
 

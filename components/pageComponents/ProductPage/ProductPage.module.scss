@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    margin: 50px;
+    gap: 50px;
+}
+
+.sorting{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-end;
+    span{
+        cursor: pointer;
+    }
+}
+.brand {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .rating {
+    display: flex;
+    align-items: center;
+    color: #848484;
+    gap: 5px;
+  }
+
+  .products{
+    display: grid;
+    gap: 20px;
+  }
