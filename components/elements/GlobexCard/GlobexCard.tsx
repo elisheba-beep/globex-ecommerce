@@ -8,6 +8,8 @@ interface CardProps {
   alt?: string;
   width?: number;
   height?: number;
+  layout?:"fixed" | "fill" | "responsive" | "intrinsic" |"raw" ,
+  objectFit?: any
   display?: "flex" | "block" | "reverse";
   children: React.ReactNode;
 }
@@ -19,6 +21,8 @@ const GlobexCard = ({
   width,
   height,
   display,
+  layout,
+  objectFit
 }: CardProps) => {
   return (
     <div
@@ -41,6 +45,8 @@ const GlobexCard = ({
         alt={alt}
         width={width}
         height={height}
+        layout={layout}
+        objectFit={objectFit}
         className={styles.image}
         style={{
           borderRadius: `${

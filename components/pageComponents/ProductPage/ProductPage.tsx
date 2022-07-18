@@ -6,7 +6,9 @@ import GlobexCard from "../../elements/GlobexCard/GlobexCard";
 import GlobexPrice from "../../elements/GlobexPrice/GlobexPrice";
 import GlobexPage from "../../layouts/GlobexPage/GlobexPage";
 import GlobexGrid from "../../sectionComponents/GlobexGrid/GlobexGrid";
-import GlobexProductFilters from "../../sectionComponents/GlobexProductFilters/GlobexProductFilters";
+import GlobexProductFilters, {
+  brands,
+} from "../../sectionComponents/GlobexProductFilters/GlobexProductFilters";
 import styles from "./ProductPage.module.scss";
 import one from "/public/images/gridSix.png";
 import two from "/public/images/gridSeven.png";
@@ -20,6 +22,7 @@ import nine from "/public/images/image-six.png";
 import ten from "/public/images/image-three.png";
 import eleven from "/public/images/image-two.png";
 import twelve from "/public/images/gridNine.png";
+import { Value } from "sass";
 
 export const images = [
   {
@@ -134,21 +137,27 @@ export const images = [
 
 const ProductPage = () => {
   const [showFilters, setShowFilters] = useState(false);
+  const [value, setValue] = useState(images);
   const handleClick = () => {
-    setShowFilters(prev=> !prev);
-  }
+    setShowFilters((prev) => !prev);
+  };
+
   return (
     <GlobexPage>
       <div className={styles.container}>
-        {showFilters && <GlobexProductFilters />}
-        
+        {showFilters && (
+          <div className={styles.filters}>
+            <GlobexProductFilters onClick={() => {}} setValue={setValue} />
+          </div>
+        )}
+
         <div className={styles.products}>
           <div className={styles.sorting}>
             <h3>
               Filters{" "}
               <span>
                 {" "}
-                <RiFilter3Fill onClick={handleClick}/>
+                <RiFilter3Fill onClick={handleClick} />
               </span>{" "}
             </h3>
             <h3>
@@ -158,23 +167,33 @@ const ProductPage = () => {
               </span>{" "}
             </h3>
           </div>
-          <GlobexGrid grid={showFilters ? '3col' : '4col'} gap="20px">
-            {images.map((image) => {
+          <GlobexGrid grid={showFilters ? "3col" : "4col"} gap="20px">
+            {value.map((image) => {
               return (
-                <GlobexCard key={image.id} src={image.url} display="block">
-                  <h3>{image.product}</h3>
-                  <div className={styles.brand}>
-                    <p>{image.brand}</p>
-                    <div className={styles.rating}>
-                      <p>4.4 </p>
-                      <IoIosStar />
+                <GlobexCard
+                  key={image.id}
+                  src={image.url}
+                  width={410}
+                  height={301}
+                  objectFit="cover"
+                  display="block"
+                  layout="responsive"
+                >
+                  <div className={styles.box}>
+                    <h3>{image.product}</h3>
+                    <div className={styles.brand}>
+                      <p>{image.brand}</p>
+                      <div className={styles.rating}>
+                        <p>4.4 </p>
+                        <IoIosStar />
+                      </div>
                     </div>
+                    <GlobexPrice
+                      newPrice={image.newPrice}
+                      oldPrice={image.oldPrice}
+                      discount={image.discount}
+                    />
                   </div>
-                  <GlobexPrice
-                    newPrice={image.newPrice}
-                    oldPrice={image.oldPrice}
-                    discount={image.discount}
-                  />
                 </GlobexCard>
               );
             })}
