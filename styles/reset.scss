@@ -4,6 +4,9 @@
 *:after {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  &::selection {
+    background-color: #c4c4c4;
+  }
 }
 html, body {
   font-family: "Poppins", sans-serif;
@@ -69,7 +72,7 @@ video {
   -webkit-font-smoothing: antialiased;
   text-size-adjust: none;
   &::selection {
-    background-color: #939393;
+    background-color: #c4c4c4;
   }
   
 }
@@ -81,7 +84,7 @@ section,
 main {
   display: block;
   &::selection {
-    background-color: #939393;
+    background-color: #c4c4c4;
   }
 }
 
@@ -92,11 +95,17 @@ body {
 ol,
 ul {
   list-style: none;
+  &::selection {
+    background-color: #c4c4c4;
+  }
 }
 
 blockquote,
 q {
   quotes: none;
+  &::selection {
+    background-color: #c4c4c4;
+  }
 }
 
 blockquote:before,
@@ -105,11 +114,17 @@ q:before,
 q:after {
   content: "";
   content: none;
+  &::selection {
+    background-color: #c4c4c4;
+  }
 }
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
+  &::selection {
+    background-color: #c4c4c4;
+  }
 }
 
 input {
@@ -119,7 +134,7 @@ input {
     outline: none;
   }
   &::selection {
-    background-color: #939393;
+    background-color: #c4c4c4;
   }
 }
 
@@ -132,14 +147,14 @@ input[type="range"] {
 /***** Track Styles *****/
 /***** Chrome, Safari, Opera, and Edge Chromium *****/
 input[type="range"]::-webkit-slider-runnable-track {
-  background: #939393;
+  background: #c4c4c4;
   height: 5px;
   border-radius: 2px;
 }
 
 /******** Firefox ********/
 input[type="range"]::-moz-range-track {
-  background: #939393;
+  background: #c4c4c4;
   height: 5px;
   border-radius: 2px;
 }
@@ -155,4 +170,9 @@ input[type="range"]::-webkit-slider-thumb {
   width: 1rem;
   border-radius: 100%;
   border: 1px solid #898989;
+}
+button{
+  &::selection {
+    background-color: #c4c4c4;
+  }
 }
