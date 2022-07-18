@@ -13,7 +13,7 @@ const GlobexPage = ({ children }: PageProps) => {
     <div>
       <Head>
         <title>Globex</title>
-        <meta name="description" content="Globex e-commerce website" />
+        <meta name="description" content="Globex is an e-commerce website " />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>

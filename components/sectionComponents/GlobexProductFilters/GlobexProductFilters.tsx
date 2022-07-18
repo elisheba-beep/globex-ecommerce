@@ -6,7 +6,6 @@ import { IoIosSearch } from "react-icons/io";
 import GlobexCheckbox from "../../elements/GlobexCheckbox/GlobexCheckbox";
 import GlobexHeading3 from "../../elements/GlobexText/GlobexHeading3/GlobexHeading3";
 import { images } from "../../pageComponents/ProductPage";
-import { Value } from "sass";
 
 export const brands = [
   {
