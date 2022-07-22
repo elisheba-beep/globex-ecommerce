@@ -8,6 +8,8 @@ import forever from "/public/images/forever.png";
 import Image from "next/image";
 import GlobexButton from "../../elements/GlobexButton/GlobexButton";
 import GlobexScrollButtons from "./GlobexScrollButtons/GlobexScrollButtons";
+import { useRouter } from "next/router";
+import { Routes } from "../../../constants/navigation";
 
 const images = [
   {
@@ -43,6 +45,7 @@ const images = [
 ];
 
 const GlobexScrollable = () => {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(images.length);
   function back() {
@@ -79,7 +82,9 @@ const GlobexScrollable = () => {
                   <div className={styles.box}>
                     <Image src={image.logo} alt="logo" />
                     <h3>Min {image.discount} off</h3>
-                    <GlobexButton variant="black">Explore</GlobexButton>
+                    <GlobexButton variant="black" onClick={()=>{
+                      router.push(Routes.products);
+                    }}>Explore</GlobexButton>
                   </div>
                 </GlobexCard>
               );
