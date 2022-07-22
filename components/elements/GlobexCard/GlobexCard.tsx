@@ -12,6 +12,7 @@ interface CardProps {
   objectFit?: any
   display?: "flex" | "block" | "reverse";
   children: React.ReactNode;
+  onClick?: VoidFunction
 }
 
 const GlobexCard = ({
@@ -22,7 +23,8 @@ const GlobexCard = ({
   height,
   display,
   layout,
-  objectFit
+  objectFit,
+  onClick
 }: CardProps) => {
   return (
     <div
@@ -39,6 +41,7 @@ const GlobexCard = ({
             : "row-reverse"
         }`,
       }}
+      onClick={onClick}
     >
       <Image
         src={src}

@@ -5,89 +5,9 @@ import styles from "./GlobexProductFilters.module.scss";
 import { IoIosSearch } from "react-icons/io";
 import GlobexCheckbox from "../../elements/GlobexCheckbox/GlobexCheckbox";
 import GlobexHeading3 from "../../elements/GlobexText/GlobexHeading3/GlobexHeading3";
-import { images } from "../../pageComponents/ProductPage";
-
-export const brands = [
-  {
-    name: "Tokyo Talkies",
-    number: 206,
-    id: 0,
-  },
-  {
-    name: "Roadster",
-    number: 26,
-    id: 1,
-  },
-  {
-    name: "Here&Now",
-    number: 706,
-    id: 2,
-  },
-  {
-    name: "Levis",
-    number: 64,
-    id: 3,
-  },
-  {
-    name: "Forever 21",
-    number: 16,
-    id: 4,
-  },
-];
-export const prices = [
-  {
-    range: "Rs 350 to Rs 500",
-    number: 206,
-    id: 0,
-  },
-  {
-    range: "Rs 500 to Rs 700",
-    number: 26,
-    id: 1,
-  },
-  {
-    range: "Rs 700 to Rs 1000",
-    number: 706,
-    id: 2,
-  },
-  {
-    range: "Rs 1000 to Rs 1400",
-    number: 64,
-    id: 3,
-  },
-  {
-    range: "Rs 1400 to Rs 2000",
-    number: 16,
-    id: 4,
-  },
-];
-const discount = [
-  {
-    range: "10% and above",
-    number: 206,
-    id: 0,
-  },
-  {
-    range: "20% and above",
-    number: 26,
-    id: 1,
-  },
-  {
-    range: "30% and above",
-    number: 706,
-    id: 2,
-  },
-  {
-    range: "40% and above",
-    number: 64,
-    id: 3,
-  },
-  {
-    range: "50% and above",
-    number: 16,
-    id: 4,
-  },
-];
+import { brands } from "../../../constants/brandData";
+import { prices } from "../../../constants/priceData";
+import { discount } from "../../../constants/discountData";
 
 interface ProductFilterProps {
   onClick: VoidFunction;
@@ -100,94 +20,139 @@ const GlobexProductFilters = ({
   onClick,
   checked,
   setValue,
+  value,
 }: ProductFilterProps) => {
-  const filterBrandProducts = (item: string) => {
-    const filteredItem = images.filter((product) => {
-      return product.brand === item;
+  const [brandTag, setBrandTag] = useState(true);
+  const [priceTag, setPriceTag] = useState(true);
+  const [discountTag, setDiscountTag] = useState(true);
+  const [all, setAll] = useState(true);
+  const removeBrandProducts = (item: string) => {
+    // const filteredItem = images.filter((product) => {
+    //   return product.brand !== item;
+    // });
+    setValue((prev: any[]) => {
+      return prev.filter((product: { brand: string }) => {
+        return product.brand !== item;
+      });
     });
-    setValue(filteredItem);
   };
+  
+
+  const addBrandProduct = (item: string) => {};
 
   return (
     <div className={styles.container}>
       <div className={styles.section}>
         <div className={styles.heading}>
           <GlobexSubHeading subHeading="Filters" />
-          <span>Clear All</span>
-        </div>
-        <div className={styles.tags}>
-          <GlobexFilter tag="Brand" />
-          <GlobexFilter tag="Price" />
-
-          <GlobexFilter tag="Discounts" />
-        </div>
-      </div>
-      <hr />
-
-      <div className={styles.section}>
-        <div className={styles.heading}>
-          <GlobexHeading3 heading3="Brand" />
-          <span>
-            <IoIosSearch />
+          <span
+            onClick={() => {
+            }}
+          >
+          {brandTag == false && priceTag ==  false && discountTag == false ? 'Show All': 'Clear All'}
           </span>
         </div>
-        <div className={styles.checkboxes}>
-          {brands.map((brand) => {
-            return (
-              <GlobexCheckbox
-                key={brand.id}
-                tag={brand.name}
-                number={brand.number}
-                onClick={() => {
-                  filterBrandProducts(brand.name);
-                }}
-              />
-            );
-          })}
-          <p className={styles.blueText}>+40 more</p>
+        <div className={styles.tags}>
+          {brandTag && (
+            <GlobexFilter
+              tag="Brand"
+              onClick={() => {
+                setBrandTag(!brandTag);
+              }}
+            />
+          )}
+          {priceTag && (
+            <GlobexFilter
+              tag="Price"
+              onClick={() => {
+                setPriceTag(!priceTag);
+              }}
+            />
+          )}
+          {discountTag && (
+            <GlobexFilter
+              tag="Discounts"
+              onClick={() => {
+                setDiscountTag(!discountTag);
+              }}
+            />
+          )}
         </div>
       </div>
+      <hr />
+      {brandTag && (
+        <div className={styles.section}>
+          <div className={styles.heading}>
+            <GlobexHeading3 heading3="Brand" />
+            <span>
+              <IoIosSearch />
+            </span>
+          </div>
+          <div className={styles.checkboxes}>
+            {brands.map((brand) => {
+              return (
+                <GlobexCheckbox
+                  key={brand.id}
+                  tag={brand.name}
+                  number={brand.number}
+                  onUncheck={() => {
+                    removeBrandProducts(brand.name);
+                  }}
+                  onCheck={() => {
+                    addBrandProduct(brand.name);
+                  }}
+                />
+              );
+            })}
+            <p className={styles.blueText}>+40 more</p>
+          </div>
+        </div>
+      )}
 
       <hr />
-
-      <div className={styles.section}>
-        <div className={styles.heading}>
-          <GlobexHeading3 heading3="Price" />
+      {priceTag && (
+        <div className={styles.section}>
+          <div className={styles.heading}>
+            <GlobexHeading3 heading3="Price" />
+          </div>
+          <div className={styles.checkboxes}>
+            {prices.map((price) => {
+              return (
+                <GlobexCheckbox
+                  key={price.id}
+                  tag={price.range}
+                  number={price.number}
+                  onCheck={onClick}
+                  onUncheck={onClick}
+                  checked={checked}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div className={styles.checkboxes}>
-          {prices.map((price) => {
-            return (
-              <GlobexCheckbox
-                key={price.id}
-                tag={price.range}
-                number={price.number}
-                onClick={onClick}
-                checked={checked}
-              />
-            );
-          })}
-        </div>
-      </div>
+      )}
 
       <hr />
-
-      <div className={styles.section}>
-        <div className={styles.heading}>
-          <GlobexHeading3 heading3="Discount Range" />
+      {discountTag && (
+        <div className={styles.section}>
+          <div className={styles.heading}>
+            <GlobexHeading3 heading3="Discount Range" />
+          </div>
+          <div className={styles.checkboxes}>
+            {discount.map((discount) => {
+              return (
+                <GlobexCheckbox
+                  key={discount.id}
+                  tag={discount.range}
+                  number={discount.number}
+                  onCheck={onClick}
+                  onUncheck={onClick}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div className={styles.checkboxes}>
-          {discount.map((discount) => {
-            return (
-              <GlobexCheckbox
-                key={discount.id}
-                tag={discount.range}
-                number={discount.number}
-                onClick={onClick}
-              />
-            );
-          })}
-        </div>
-      </div>
+      )}
     </div>
   );
 };
