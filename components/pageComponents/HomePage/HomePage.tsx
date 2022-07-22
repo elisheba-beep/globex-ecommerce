@@ -24,6 +24,8 @@ import GlobexButton from "../../elements/GlobexButton/GlobexButton";
 import GlobexServices from "../../elements/GlobexServices/GlobexServices";
 import { GlobexAbout } from "../../sectionComponents/GlobexAbout";
 import GlobexBlogs from "../../sectionComponents/GlobexBlogs/GlobexBlogs";
+import { useRouter } from "next/router";
+import { Routes } from "../../../constants/navigation";
 
 const images = [
   {
@@ -77,6 +79,7 @@ const spotlight:Spotlight = [
 ];
 
 const HomePage = () => {
+  const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [index, setIndex] = useState(0);
 
@@ -135,7 +138,9 @@ const HomePage = () => {
       <div className={styles.container}>
         <GlobexSubHeading subHeading="Trending Now" />
         <div className={styles.cards}>
-          <GlobexCard src={imageOne} display="block">
+          <GlobexCard src={imageOne} display="block" onClick={()=>{
+        router.push(Routes.products + '7');
+      }}>
             <h3>Women&apos;s Denim Jacket</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
@@ -151,7 +156,9 @@ const HomePage = () => {
             />
           </GlobexCard>
 
-          <GlobexCard src={imageTwo} display="block">
+          <GlobexCard src={imageTwo} display="block" onClick={()=>{
+        router.push(Routes.products + '10');
+      }}>
             <h3>Men&apos;s Biker Jacket</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
@@ -167,7 +174,9 @@ const HomePage = () => {
             />
           </GlobexCard>
 
-          <GlobexCard src={imageThree} display="block">
+          <GlobexCard src={imageThree} display="block" onClick={()=>{
+        router.push(Routes.products + '9');
+      }}>
             <h3>Baggy Shirt</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
@@ -183,7 +192,9 @@ const HomePage = () => {
             />
           </GlobexCard>
 
-          <GlobexCard src={imageFour} display="block">
+          <GlobexCard src={imageFour} display="block" onClick={()=>{
+        router.push(Routes.products + '6');
+      }}>
             <h3>Dinner Dress</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
@@ -204,7 +215,9 @@ const HomePage = () => {
 
         <GlobexSubHeading subHeading="Deals of the Day" />
         <div className={styles.cards}>
-          <GlobexCard src={imageOne} display="block">
+          <GlobexCard src={imageOne} display="block" onClick={()=>{
+        router.push(Routes.products + '7');
+      }}>
             <div className={styles.deals}>
               <Image src={dealsLogo} alt="brand" />
               <h3>Best of Styles</h3>
@@ -212,7 +225,9 @@ const HomePage = () => {
             </div>
           </GlobexCard>
 
-          <GlobexCard src={imageFive} display="block">
+          <GlobexCard src={imageFive} display="block" onClick={()=>{
+        router.push(Routes.products + '5');
+      }}>
             <div className={styles.deals}>
               <Image src={dealsLogo} alt="brand" />
               <h3>Best of Styles</h3>
@@ -220,7 +235,9 @@ const HomePage = () => {
             </div>
           </GlobexCard>
 
-          <GlobexCard src={imageSix} display="block">
+          <GlobexCard src={imageSix} display="block" onClick={()=>{
+        router.push(Routes.products + '8');
+      }}>
             <div className={styles.deals}>
               <Image src={dealsLogo} alt="brand" />
               <h3>Best of Styles</h3>
@@ -228,7 +245,9 @@ const HomePage = () => {
             </div>
           </GlobexCard>
 
-          <GlobexCard src={imageTwo} display="block">
+          <GlobexCard src={imageTwo} display="block" onClick={()=>{
+        router.push(Routes.products + '10');
+      }}>
             <div className={styles.deals}>
               <Image src={dealsLogo} alt="brand" />
               <h3>Best of Styles</h3>
