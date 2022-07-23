@@ -3,4 +3,5 @@ export enum Routes {
     products = '/products/',
     women = '/women/',
     men = '/men/',
+    wishlist = '/wishlist/',
 }

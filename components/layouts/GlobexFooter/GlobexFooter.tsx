@@ -72,7 +72,13 @@ const GlobexFooter = () => {
             <li>Your cart</li>
             <li>Your orders</li>
             <li>Compared items</li>
-            <li>Wishlist</li>
+            <li
+              onClick={() => {
+                router.push(Routes.wishlist);
+              }}
+            >
+              Wishlist
+            </li>
             <li>Shipping details</li>
           </ul>
 

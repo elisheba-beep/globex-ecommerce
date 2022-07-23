@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import Image from "next/image";
-import React, { useState } from "react";
+import Image, { StaticImageData } from "next/image";
+import React, { createContext, useState } from "react";
 import useProduct from "../../../context/productContext";
 import GlobexPage from "../../layouts/GlobexPage/GlobexPage";
 import styles from "./ProductOpenPage.module.scss";
@@ -18,6 +18,7 @@ import ProductReview from "./ProductReview";
 import GlobexCard from "../../elements/GlobexCard/GlobexCard";
 import { Routes } from "../../../constants/navigation";
 import { IoIosStar } from "react-icons/io";
+import products from "../../../pages/products";
 
 const steps = ["Product Details", "Specifications", "Ratings & Reviews"];
 
@@ -67,15 +68,38 @@ const specsTwo = [
     sub: "Casual",
   },
 ];
-
+export const wishlist: {
+  id: number;
+  brand: string;
+  product: string;
+  newPrice: string;
+  oldPrice: string;
+  discount: string;
+  url: StaticImageData;
+}[] = [];
 const ProductOpenPage: NextPage = () => {
   const products = useProduct();
   const [selected, setSelected] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentSize, setCurrentSize] = useState(0);
   const [favorite, setFavorite] = useState(false);
-  const handleFavorite = () => {
+  const handleFavorite = (product: {
+    id: number;
+    brand: string;
+    product: string;
+    newPrice: string;
+    oldPrice: string;
+    discount: string;
+    url: StaticImageData;
+  }) => {
     setFavorite((prevFavorite) => !prevFavorite);
+    if (favorite === true) {
+      wishlist.push(product);
+    } else {
+      wishlist.pop();
+    }
+    console.log(wishlist.length);
+    console.log(wishlist);
   };
 
   const router = useRouter();
@@ -182,8 +206,11 @@ const ProductOpenPage: NextPage = () => {
                           }}
                         >
                           {size}
-                         {currentSize === index ? <hr className={styles.selectedSize}/> : ''
-                         } 
+                          {currentSize === index ? (
+                            <hr className={styles.selectedSize} />
+                          ) : (
+                            ""
+                          )}
                         </GlobexButton>
                       );
                     })}
@@ -237,12 +264,13 @@ const ProductOpenPage: NextPage = () => {
                   </div>
                   <div className={styles.addToCart}>
                     <GlobexButton variant="filled">Add to cart</GlobexButton>
-                    <div className={styles.favorite}>
-                      {favorite ? (
-                        <MdFavorite onClick={handleFavorite} />
-                      ) : (
-                        <MdFavoriteBorder onClick={handleFavorite} />
-                      )}
+                    <div
+                      className={styles.favorite}
+                      onClick={() => {
+                        handleFavorite(product);
+                      }}
+                    >
+                      {favorite ?  <MdFavoriteBorder /> : <MdFavorite />}
                     </div>
                   </div>
                 </div>

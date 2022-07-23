@@ -10,6 +10,7 @@ const nextConfig = {
       "/products": { page: "/products" },
       "/women": { page: "/women" },
       "/men": { page: "/men" },
+      "/wishlist": { page: "/wishlist" },
     };
   },
   trailingSlash: true,
