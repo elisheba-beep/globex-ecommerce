@@ -10,13 +10,24 @@ import {
   IoLogoTwitter,
   IoLogoWhatsapp,
 } from "react-icons/io";
+import { useRouter } from "next/router";
+import { Routes } from "../../../constants/navigation";
 
 const GlobexFooter = () => {
+  const router = useRouter();
   return (
     <div className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <Image src={logoWhite} alt="logo" width={100} height={80} />
+          <Image
+            src={logoWhite}
+            alt="logo"
+            width={100}
+            height={80}
+            onClick={() => {
+              router.push(Routes.home);
+            }}
+          />
           <GlobexHeading colour="#FFFFFF" heading="Globex" />
         </div>
         <div className={styles.lists}>
