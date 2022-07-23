@@ -36,6 +36,16 @@
 .sizes {
   display: flex;
   gap: 20px;
+  position: relative;
+
+  .selectedSize {
+    position: absolute;
+    bottom: 30%;
+    left: -3px;
+    z-index: 1;
+    width: 100%;
+    transform: rotate(-45deg);
+  }
 }
 
 .colorImg {

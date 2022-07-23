@@ -21,6 +21,8 @@ import { IoIosStar } from "react-icons/io";
 
 const steps = ["Product Details", "Specifications", "Ratings & Reviews"];
 
+const sizes = ["XS", "S", "M", "L", "XL"];
+
 const specsOne = [
   {
     name: "Sleeve Length",
@@ -70,6 +72,7 @@ const ProductOpenPage: NextPage = () => {
   const products = useProduct();
   const [selected, setSelected] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSize, setCurrentSize] = useState(0);
   const [favorite, setFavorite] = useState(false);
   const handleFavorite = () => {
     setFavorite((prevFavorite) => !prevFavorite);
@@ -159,11 +162,31 @@ const ProductOpenPage: NextPage = () => {
                   <h3>Select Size</h3>
                   <p className={styles.sizeChart}>Size chart {">"}</p>
                   <div className={styles.sizes}>
-                    <GlobexButton variant="round">XS</GlobexButton>
-                    <GlobexButton variant="round">S</GlobexButton>
-                    <GlobexButton variant="round">M</GlobexButton>
-                    <GlobexButton variant="round">L</GlobexButton>
-                    <GlobexButton variant="round">XL</GlobexButton>
+                    {sizes.map((size, index) => {
+                      return (
+                        <GlobexButton
+                          variant="round"
+                          key={index}
+                          onClick={() => {
+                            console.log(selected);
+                            if (currentSize === index) {
+                              setSelected(!selected);
+                            } else {
+                              setCurrentSize(index);
+                            }
+                          }}
+                          style={{
+                            color: `${
+                              currentSize === index ? "#bababa" : "#272727"
+                            }`,
+                          }}
+                        >
+                          {size}
+                         {currentSize === index ? <hr className={styles.selectedSize}/> : ''
+                         } 
+                        </GlobexButton>
+                      );
+                    })}
                   </div>
                   <h3>Select Color</h3>
                   <div className={styles.sizes}>
