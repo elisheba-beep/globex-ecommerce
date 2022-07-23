@@ -11,10 +11,10 @@ const nextConfig = {
     };
   },
   trailingSlash: true,
-  images: {
-    loader: "akamai",
-    path: "",
-  },
+  // images: {
+  //   loader: "akamai",
+  //   path: "",
+  // },
 };
 
 const withImages = require("next-images");
