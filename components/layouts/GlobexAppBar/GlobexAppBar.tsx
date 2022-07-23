@@ -37,8 +37,12 @@ const GlobexAppBar = () => {
         className={styles.image}
       />
       <ul>
-        <li>Men</li>
-        <li>Women</li>
+        <li style={{textDecoration: `${router.asPath == '/men' ? 'underline' : ''}`}} onClick={()=>{
+          router.push(Routes.men)
+        }}>Men</li>
+        <li style={{textDecoration: `${router.asPath == '/women' ? 'underline' : ''}`}} onClick={()=>{
+          router.push(Routes.women)
+        }}>Women</li>
         <li>Kids</li>
         <li style={{textDecoration: `${router.asPath == '/products' ? 'underline' : ''}`}} onClick={()=>{
           router.push(Routes.products)

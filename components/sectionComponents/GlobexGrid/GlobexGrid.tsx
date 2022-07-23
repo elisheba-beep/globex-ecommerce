@@ -12,6 +12,12 @@ interface GridProps {
   gap?: string;
   grid: "random" | "3col" | "4col";
   children?: React.ReactNode;
+  onClick1?: VoidFunction;
+  onClick2?: VoidFunction;
+  onClick3?: VoidFunction;
+  onClick4?: VoidFunction;
+  onClick5?: VoidFunction;
+  onClick6?: VoidFunction;
 }
 
 const GlobexGrid = ({
@@ -24,46 +30,31 @@ const GlobexGrid = ({
   grid,
   children,
   gap,
+  onClick1,
+  onClick2,
+  onClick3,
+  onClick4,
+  onClick5,
+  onClick6,
 }: GridProps) => {
   const router = useRouter();
   return grid == "random" ? (
     <div className={styles.container}>
-      <div
-        style={{ backgroundImage: `url(${imageOne})` }}
-        onClick={() => {
-          router.push(Routes.products);
-        }}
-      />
-      <div
-        style={{ backgroundImage: `url(${imageTwo})` }}
-        onClick={() => {
-          router.push(Routes.products);
-        }}
-      />
+      <div style={{ backgroundImage: `url(${imageOne})` }} onClick={onClick1} />
+      <div style={{ backgroundImage: `url(${imageTwo})` }} onClick={onClick2} />
       <div
         style={{ backgroundImage: `url(${imageThree})` }}
-        onClick={() => {
-          router.push(Routes.products);
-        }}
+        onClick={onClick3}
       />
       <div
         style={{ backgroundImage: `url(${imageFour})` }}
-        onClick={() => {
-          router.push(Routes.products);
-        }}
+        onClick={onClick4}
       />
       <div
         style={{ backgroundImage: `url(${imageFive})` }}
-        onClick={() => {
-          router.push(Routes.products);
-        }}
+        onClick={onClick5}
       />
-      <div
-        style={{ backgroundImage: `url(${imageSix})` }}
-        onClick={() => {
-          router.push(Routes.products);
-        }}
-      />
+      <div style={{ backgroundImage: `url(${imageSix})` }} onClick={onClick6} />
     </div>
   ) : grid == "3col" ? (
     <div className={styles.threeCol} style={{ gap: `${gap}` }}>

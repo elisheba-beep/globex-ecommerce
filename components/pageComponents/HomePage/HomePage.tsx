@@ -50,26 +50,26 @@ const images = [
   },
 ];
 
-interface SpotlightProps{
-  type: 'half' | 'full',
-  right: string,
-  color: string,
-  variant: string,
-  heading: string,
-  left?: string
+interface SpotlightProps {
+  type: "half" | "full";
+  right: string;
+  color: string;
+  variant: string;
+  heading: string;
+  left?: string;
 }
-interface Spotlight extends Array<SpotlightProps>{}
+interface Spotlight extends Array<SpotlightProps> {}
 
-const spotlight:Spotlight = [
+const spotlight: Spotlight = [
   {
     right: "images/full-screen.png",
     color: "#FFFFFF",
     variant: "white",
     heading: "FOREVER 21",
-    type: 'full'
+    type: "full",
   },
   {
-    type: 'half',
+    type: "half",
     left: "images/gridThree.png",
     right: "images/greenImg.png",
     color: "#FFFFFF",
@@ -108,7 +108,7 @@ const HomePage = () => {
       clearInterval(intervalId);
       clearInterval(spotlightId);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
   return (
@@ -138,9 +138,13 @@ const HomePage = () => {
       <div className={styles.container}>
         <GlobexSubHeading subHeading="Trending Now" />
         <div className={styles.cards}>
-          <GlobexCard src={imageOne} display="block" onClick={()=>{
-        router.push(Routes.products + '7');
-      }}>
+          <GlobexCard
+            src={imageOne}
+            display="block"
+            onClick={() => {
+              router.push(Routes.products + "7");
+            }}
+          >
             <h3>Women&apos;s Denim Jacket</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
@@ -156,9 +160,13 @@ const HomePage = () => {
             />
           </GlobexCard>
 
-          <GlobexCard src={imageTwo} display="block" onClick={()=>{
-        router.push(Routes.products + '10');
-      }}>
+          <GlobexCard
+            src={imageTwo}
+            display="block"
+            onClick={() => {
+              router.push(Routes.products + "10");
+            }}
+          >
             <h3>Men&apos;s Biker Jacket</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
@@ -174,9 +182,13 @@ const HomePage = () => {
             />
           </GlobexCard>
 
-          <GlobexCard src={imageThree} display="block" onClick={()=>{
-        router.push(Routes.products + '9');
-      }}>
+          <GlobexCard
+            src={imageThree}
+            display="block"
+            onClick={() => {
+              router.push(Routes.products + "9");
+            }}
+          >
             <h3>Baggy Shirt</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
@@ -192,9 +204,13 @@ const HomePage = () => {
             />
           </GlobexCard>
 
-          <GlobexCard src={imageFour} display="block" onClick={()=>{
-        router.push(Routes.products + '6');
-      }}>
+          <GlobexCard
+            src={imageFour}
+            display="block"
+            onClick={() => {
+              router.push(Routes.products + "6");
+            }}
+          >
             <h3>Dinner Dress</h3>
             <div className={styles.brand}>
               <p>Brand Name </p>
@@ -215,9 +231,13 @@ const HomePage = () => {
 
         <GlobexSubHeading subHeading="Deals of the Day" />
         <div className={styles.cards}>
-          <GlobexCard src={imageOne} display="block" onClick={()=>{
-        router.push(Routes.products + '7');
-      }}>
+          <GlobexCard
+            src={imageOne}
+            display="block"
+            onClick={() => {
+              router.push(Routes.products + "7");
+            }}
+          >
             <div className={styles.deals}>
               <Image src={dealsLogo} alt="brand" />
               <h3>Best of Styles</h3>
@@ -225,9 +245,13 @@ const HomePage = () => {
             </div>
           </GlobexCard>
 
-          <GlobexCard src={imageFive} display="block" onClick={()=>{
-        router.push(Routes.products + '5');
-      }}>
+          <GlobexCard
+            src={imageFive}
+            display="block"
+            onClick={() => {
+              router.push(Routes.products + "5");
+            }}
+          >
             <div className={styles.deals}>
               <Image src={dealsLogo} alt="brand" />
               <h3>Best of Styles</h3>
@@ -235,9 +259,13 @@ const HomePage = () => {
             </div>
           </GlobexCard>
 
-          <GlobexCard src={imageSix} display="block" onClick={()=>{
-        router.push(Routes.products + '8');
-      }}>
+          <GlobexCard
+            src={imageSix}
+            display="block"
+            onClick={() => {
+              router.push(Routes.products + "8");
+            }}
+          >
             <div className={styles.deals}>
               <Image src={dealsLogo} alt="brand" />
               <h3>Best of Styles</h3>
@@ -245,9 +273,13 @@ const HomePage = () => {
             </div>
           </GlobexCard>
 
-          <GlobexCard src={imageTwo} display="block" onClick={()=>{
-        router.push(Routes.products + '10');
-      }}>
+          <GlobexCard
+            src={imageTwo}
+            display="block"
+            onClick={() => {
+              router.push(Routes.products + "10");
+            }}
+          >
             <div className={styles.deals}>
               <Image src={dealsLogo} alt="brand" />
               <h3>Best of Styles</h3>
@@ -283,6 +315,24 @@ const HomePage = () => {
           imageFive="images/gridFive.png"
           imageSix="images/image-one.png"
           grid="random"
+          onClick1={() => {
+            router.push(Routes.women);
+          }}
+          onClick2={() => {
+            router.push(Routes.men);
+          }}
+          onClick3={() => {
+            router.push(Routes.women);
+          }}
+          onClick4={() => {
+            router.push(Routes.women);
+          }}
+          onClick5={() => {
+            router.push(Routes.men);
+          }}
+          onClick6={() => {
+            router.push(Routes.women);
+          }}
         />
         <br />
         <br />

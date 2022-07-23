@@ -8,6 +8,8 @@ const nextConfig = {
     return {
       "/": { page: "/" },
       "/products": { page: "/products" },
+      "/women": { page: "/women" },
+      "/men": { page: "/men" },
     };
   },
   trailingSlash: true,
